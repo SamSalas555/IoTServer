@@ -8,7 +8,7 @@ void sht30_init(){
     	if (!bcm2835_init())
     	{
       		printf("bcm2835_init failed. Are you running as root??\n");
-      		return 1;
+      		return 2;
     	}
 
       	if (!bcm2835_i2c_begin())
