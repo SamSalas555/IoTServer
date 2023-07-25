@@ -8,13 +8,13 @@ void sht30_init(){
     	if (!bcm2835_init())
     	{
       		printf("bcm2835_init failed. Are you running as root??\n");
-      		return 2;
+      		exit();
     	}
 
       	if (!bcm2835_i2c_begin())
       	{
         	printf("bcm2835_i2c_begin failed. Are you running as root??\n");
-		return 1;
+			exit();
       	}
         bcm2835_i2c_setSlaveAddress( ADDR_SHT30 );
 	    bcm2835_i2c_set_baudrate(100000);

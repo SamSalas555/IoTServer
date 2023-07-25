@@ -1,10 +1,3 @@
-  GNU nano 5.4                                                                                                                                                                                                                                                                                                                                                                                                                                                          servidorTCP.c                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-/*******************************************************************************
-* sht30.c
-* gcc -o aht30 sht30.c -l bcm2835 -l pthread
-********************************************************************************/
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -16,8 +9,7 @@
 #include <signal.h>
 #include <pthread.h>
 #include <stdint.h>
-#include <bcm2835.h>
-
+#include "./../lib/sht30.h"
 
 #define PUERTO          5000    //Número de puerto asignado al servidor
 #define COLA_CLIENTES   5               //Tamaño de la cola de espera para clientes
@@ -35,7 +27,6 @@ void *thread_sht30 ( void *arg );
 void manejador( int sig );
 void atiendeCliente( int cliente_sockfd );
 
-
 float tempC, humR;
 int adq;
 
@@ -45,13 +36,8 @@ float prueba;
 pid_t pid;
 int cliente_sockfd;
 
-struct datos
-{
-        float tempe;
-        float hume;
-};
 
-struct datos ad;
+Data data;
 
 int main(int argc, char **argv)
 {
@@ -124,31 +110,14 @@ int main(int argc, char **argv)
                 perror( "Ocurrio un problema al crear la cola de aceptar peticiones de los clientes" );
                 exit( 1 );
         }
-
-        printf( "Configurando sensor SHT30 ... \n\n" );
-
-        sleep( 1 );
-
-        if ( !bcm2835_init() )
-        {
-                printf( "bcm2835_init error, ¿eres superusuario?\n" );
-                return 1;
-        }
-
-        if ( !bcm2835_i2c_begin() )
-        {
-                printf( "bcm2835_init error, ¿eres superusuario?\n" );
-                return 1;
-        }
+        
+        sht30_init();
 
         if ( signal( SIGINT, manejador ) == SIG_ERR )
         {
                 perror( "Error al asignar la señal\n" );
                 exit( EXIT_FAILURE );
         }
-
-        bcm2835_i2c_setSlaveAddress( ADDR_SHT30 );
-        bcm2835_i2c_set_baudrate( BAUDIOS );
 
 
         adq = 1;
@@ -213,11 +182,11 @@ void atiendeCliente( int cliente_sockfd )
         printf ("El cliente nos envio el siguiente mensaje: \n %s \n", leer_mensaje);
 
 
-        ad.tempe = tempC;
-        ad.hume = humR;
+        data.temperature = tempC;
+        data.humidity = humR;
 
 
-        if( write (cliente_sockfd, &ad, sizeof(ad)/*LONG_MEN*/) < 0 )
+        if( write (cliente_sockfd, &data, sizeof(data)/*LONG_MEN*/) < 0 )
         {
                 perror("Ocurrio un problema en el envio de un mensaje al cliente");
                 exit(EXIT_FAILURE);

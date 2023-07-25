@@ -5,6 +5,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include "./../lib/sht30.h"
 
 //#define PUERTO 14412
 #define PUERTO 5000
