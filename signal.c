@@ -14,6 +14,8 @@
 #include <signal.h>
 #include <pthread.h>
 #include <stdint.h>
+#include <syslog.h>
+
 
 // ZONA DE CÓDIGOS ********************************************************************
 
