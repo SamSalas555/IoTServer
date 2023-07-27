@@ -15,6 +15,7 @@
 #include <pthread.h>
 #include <stdint.h>
 #include "procesos.h"
+#include "hilos.h"
 
 // ZONA DE CÓDIGOS ********************************************************************
 
