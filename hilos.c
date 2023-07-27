@@ -14,7 +14,7 @@
 
 extern int cliente_sockfd, pid,adq,sockfd;
 // ZONA DE CÓDIGOS ********************************************************************
-
+datos Tx;
 void *thread_sht30( void *arg  )
 {
         char comando[2], sensor[6];
