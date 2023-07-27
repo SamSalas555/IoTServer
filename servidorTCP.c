@@ -18,7 +18,10 @@
 #include <stdint.h>
 #include <bcm2835.h>
 #include <syslog.h>
-#include "files.h"
+#include "perifericos.h"
+#include "hilos.h"
+#include "procesos.h"
+#include "signal.h"
 
 // ZONA DE DATOS   ********************************************************************
 

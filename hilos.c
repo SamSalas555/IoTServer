@@ -6,10 +6,11 @@
 // ZONA DE DATOS   ********************************************************************
 // DECLARACIÓN DE VARIABLES, ESTRUCTURAS Y FUNCIONES
 #include "hilos.h"
-#include<syslog.h>
+#include <syslog.h>
 #include <stdio.h>
-#include <sys/types.h>;
-#include <unistd.h>;
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdlib.h>
 
 extern int cliente_sockfd, pid;
 // ZONA DE CÓDIGOS ********************************************************************
