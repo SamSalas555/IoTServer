@@ -9,11 +9,11 @@ SRC:=$(wildcard *.c)
 all: $(PROYECTO)
 
 %.o: %.c
-        $(CC) -c $< $(CFLAGS)
+        $(CC) -c $< $(CFLAGS) -l bcm2835
 
 #$(PROYECTO): $(OBJS)
 $(PROYECTO): $(SRC:.c=.o)
-        $(CC) $^ -o $@ $(LFLAGS)
+        $(CC) $^ -o $@ $(LFLAGS) -l bcm2835
 
 .PHONY: clean
 
