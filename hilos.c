@@ -12,7 +12,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-extern int cliente_sockfd, pid;
+extern int cliente_sockfd, pid,adq,sockfd;
 // ZONA DE CÓDIGOS ********************************************************************
 
 void *thread_sht30( void *arg  )
