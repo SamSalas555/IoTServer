@@ -9,22 +9,22 @@ SRC:=$(wildcard *.c)
 all: $(PROYECTO)
 
 %.o: %.c
-        $(CC) -c $< $(CFLAGS) -l bcm2835
+	$(CC) -c $< $(CFLAGS) -l bcm2835
 
 #$(PROYECTO): $(OBJS)
 $(PROYECTO): $(SRC:.c=.o)
-        $(CC) $^ -o $@ $(LFLAGS) -l bcm2835
+	$(CC) $^ -o $@ $(LFLAGS) -l bcm2835 -pthread
 
 .PHONY: clean
 
 install: all
-        if [ ! -d $(DESTDIR) ]; then \
-                sudo mkdir $(DESTDIR); \
-        fi; \
-        sudo cp $(PROYECTO) $(DESTDIR)
+	if [ ! -d $(DESTDIR) ]; then \
+		sudo mkdir $(DESTDIR); \
+	fi; \
+	sudo cp $(PROYECTO) $(DESTDIR)
 
 uninstall:
-        sudo rm /usr/local/bin/$(PROYECTO)
+	sudo rm /usr/local/bin/$(PROYECTO)
 
 clean:
-        rm -f *.o *.txt $(PROYECTO)
+	rm -f *.o *.txt $(PROYECTO)
