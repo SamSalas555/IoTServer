@@ -9,9 +9,10 @@
 #include <sys/wait.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/stat.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include <signal.h>
+#include <syslog.h>
 #include <pthread.h>
 #include <stdint.h>
 #include "procesos.h"
