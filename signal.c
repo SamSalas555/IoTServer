@@ -15,6 +15,7 @@
 #include <pthread.h>
 #include <stdint.h>
 #include <syslog.h>
+#include <bcm2835.h>
 
 
 // ZONA DE CÓDIGOS ********************************************************************
