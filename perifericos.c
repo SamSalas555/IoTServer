@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <bcm2835.h>
+#include <syslog.h>
 #include "perifericos.h"
 // ZONA DE CÓDIGOS ********************************************************************
 
