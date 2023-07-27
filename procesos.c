@@ -3,14 +3,18 @@
 * Envía las variables de temperatura y humedad.
 * Realiza la configuración del servidor como demonio.
 ********************************************************************************/
-
-// ZONA DE DATOS   ********************************************************************
-// DECLARACIÓN DE VARIABLES, ESTRUCTURAS Y FUNCIONES
-
-void atiendeCliente( int cliente_sockfd );
-
-void iniDemonio();
-void umask();
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <signal.h>
+#include <pthread.h>
+#include <stdint.h>
+#include "procesos.h"
 
 // ZONA DE CÓDIGOS ********************************************************************
 

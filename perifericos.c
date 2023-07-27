@@ -2,17 +2,12 @@
 * perifericos.c - iniIIC_SHT30();
 * Realiza la inicialización de IIC y del sensor SHT30.
 ********************************************************************************/
-
-// ZONA DE DATOS   ********************************************************************
-
-#define ADDR_SHT30      0x44
-#define BAUDIOS         100000
-
-// DECLARACIÓN DE VARIABLES, ESTRUCTURAS Y FUNCIONES
-
-void iniIIC_SHT30();
-void ISRsw( int sig );
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <bcm2835.h>
+#include "perifericos.h"
 // ZONA DE CÓDIGOS ********************************************************************
 
 void iniIIC_SHT30()

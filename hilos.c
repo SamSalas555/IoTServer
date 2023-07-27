@@ -5,20 +5,13 @@
 
 // ZONA DE DATOS   ********************************************************************
 // DECLARACIÓN DE VARIABLES, ESTRUCTURAS Y FUNCIONES
+#include "hilos.h"
+#include<syslog.h>
+#include <stdio.h>
+#include <sys/types.h>;
+#include <unistd.h>;
 
 extern int cliente_sockfd, pid;
-
-typedef struct datos_Tx
-{
-      float temp;
-      float hume;
-} datos;
-
-datos Tx;
-
-void *thread_sht30 ( void *arg );
-void atiendeCliente( int cliente_sockfd );
-
 // ZONA DE CÓDIGOS ********************************************************************
 
 void *thread_sht30( void *arg  )

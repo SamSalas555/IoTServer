@@ -2,13 +2,18 @@
 * signal.c - ISRsw();
 * Realiza la terminación del servidor y del hilo.
 ********************************************************************************/
-
-// ZONA DE DATOS   ********************************************************************
-// DECLARACIÓN DE VARIABLES, ESTRUCTURAS Y FUNCIONES
-
-extern int adq, sockfd;
-
-void ISRsw( int sig );
+#include "signal.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <signal.h>
+#include <pthread.h>
+#include <stdint.h>
 
 // ZONA DE CÓDIGOS ********************************************************************
 
@@ -19,13 +24,13 @@ void ISRsw( int sig )
 
         if( sig == SIGCHLD )
         {
-                syslog( LOG_INFO, "Recibiendo señal del proceso hijo.....\n" );
+                syslog(LOG_INFO, "Recibiendo señal del proceso hijo.....\n" );
                 pid = wait( &estado );
-                syslog( LOG_INFO, "Proceso hijo con pid %d, terminado! \n\n\n", pid );
+                syslog(LOG_INFO, "Proceso hijo con pid %d, terminado! \n\n\n", pid );
         }
         else if( sig == SIGINT )
         {
-                syslog( LOG_INFO, "Señal SIGINT recibida\n" );
+                syslog(LOG_INFO, "Señal SIGINT recibida\n" );
                 adq = 0;
                 syslog( LOG_INFO, "Concluimos la ejecución de la aplicacion Servidor \n" );
                 close( sockfd );
