@@ -9,7 +9,7 @@ SRC:=$(wildcard *.c)
 all: $(PROYECTO)
 
 %.o: %.c
-	$(CC) -c $< $(CFLAGS) -l bcm2835
+	$(CC) -c $< $(CFLAGS) -l bcm2835 -pthread
 
 #$(PROYECTO): $(OBJS)
 $(PROYECTO): $(SRC:.c=.o)

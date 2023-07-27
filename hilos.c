@@ -11,10 +11,12 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
-
+#include <bcm2835.h>
+#include <sys/socket.h>
+#include <pthread.h>
 extern int cliente_sockfd, pid,adq,sockfd;
 // ZONA DE CÓDIGOS ********************************************************************
-datos Tx;
+extern datos Tx;
 void *thread_sht30( void *arg  )
 {
         char comando[2], sensor[6];

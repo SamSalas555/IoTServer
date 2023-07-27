@@ -18,7 +18,7 @@
 #include "hilos.h"
 
 // ZONA DE CÓDIGOS ********************************************************************
-datos Tx;
+extern datos Tx;
 void atiendeCliente( int cliente_sockfd )
 {
         if( write ( cliente_sockfd, &Tx, sizeof( Tx ) ) < 0 )
