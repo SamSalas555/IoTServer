@@ -10,9 +10,9 @@
 
 // ZONA DE DATOS   ********************************************************************
 
-#define  PUERTO     5000
+#define  PUERTO     19015
 #define  TAM_BUFFER 100
-#define  DIR_IP     "192.168.100.220"
+#define  DIR_IP     "3.131.207.170"
 
 // DECLARACIÓN DE FUNCIONES, VARIABLES Y ESTRUCTURAS
 

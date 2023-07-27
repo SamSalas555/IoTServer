@@ -72,7 +72,7 @@ int main(int argc, char **argv)
         direccion_servidor.sin_addr.s_addr      = INADDR_ANY;
 /*
  *      Creacion de las estructuras necesarias para el manejo de un socket
- *  SOCK_STREAM - Protocolo orientado a conexión
+ *  SOCK_STREAM - Protocolo orientado a con exión
  */
         printf("\nCreando Socket ....\n");
 
